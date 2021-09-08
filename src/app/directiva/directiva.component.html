@@ -1,0 +1,14 @@
+<button type="button" class="btn btn-primary my-3" name="button" (click)="setHabilitar();">{{ (flag) ?  'Ocultar' : 'Habilitar' }}</button>
+<div class="card">
+  <div class="card-header">
+    {{title}}
+  </div>
+  <ul class="list-group" *ngIf="flag">
+    <li class="list-group-item" *ngFor="let curso of listaCurso">{{curso}}</li>
+  </ul>
+</div>
+<!-- <div class="algo">
+</div>
+<div class="algo2">
+  <p>texto prueba</p>
+</div> -->

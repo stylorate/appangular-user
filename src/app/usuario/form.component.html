@@ -1,0 +1,56 @@
+<div class="card bg-dark text-white">
+  <div class="card-header" *ngIf="!usuario.idUser else elseBlock2">{{titulo}}</div>
+  <ng-template #elseBlock2>
+    <div class="card-header">{{tituloUpdate}}</div>
+  </ng-template>
+  <div class="card-body">
+    <!-- <form (ngSubmit)="create()"> -->
+    <form>
+      <div class="form-group row my-2">
+        <label for="name" class="col-form-label col-sm-2">Nombre</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="usuario.name" name="name">
+        </div>
+      </div>
+
+      <div class="form-group row my-2">
+        <label for="lastName" class="col-form-label col-sm-2">Apellido</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="usuario.lastName" name="lastName">
+        </div>
+      </div>
+
+      <div class="form-group row my-2">
+        <label for="idCard" class="col-form-label col-sm-2">Cedula</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="usuario.idCard" name="idCard">
+        </div>
+      </div>
+
+      <div class="form-group row my-2">
+        <label for="telephone" class="col-form-label col-sm-2">Telefono</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="usuario.telephone" name="telephone">
+        </div>
+      </div>
+
+      <div class="form-group row my-2">
+        <label for="email" class="col-form-label col-sm-2">Correo</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="usuario.email" name="email">
+        </div>
+      </div>
+
+      <div class="form-group row my-2">
+        <div class="col-sm-6">
+          <button class="btn btn-primary" role="button" (click)='create()' *ngIf="!usuario.idUser else elseBlock">Crear</button>
+          <ng-template #elseBlock>
+            <button class="btn btn-primary" role="button" (click)='update()'>Editar</button>
+          </ng-template>
+        </div>
+
+      </div>
+    </form>
+
+  </div>
+</div>

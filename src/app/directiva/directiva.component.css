@@ -1,0 +1,15 @@
+.algo{
+  position: relative;
+  left: 50%;
+  height: 100px;
+  width: 100px;
+  /* background-color: red; */
+  border: 2px green solid;
+  /* background-image: linear-gradient(red, #f06d06); */
+  background-image: linear-gradient(to right, red, #f06d06);
+}
+
+
+.algo2{
+  line-height: 5px;
+}
