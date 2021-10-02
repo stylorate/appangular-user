@@ -36,8 +36,8 @@ export class FormComponent implements OnInit {
       },
       err => {
         console.log("Error: " + JSON.stringify(err)),
-          swal(`Error ${err.error.fieldErrors[0].field}`,
-            `${err.error.message} ${err.error.fieldErrors[0].message}`,
+          swal(`Error ${err.error.message}`,
+            `${err.error.fieldErrors[0].field} ${err.error.fieldErrors[0].message}`,
             'error')
       }
     );
@@ -53,8 +53,8 @@ export class FormComponent implements OnInit {
               this.usuario = resp.body as Usuario;
             },
             err => {
-              swal(`Error ${err.error.fieldErrors[0].field}`,
-                `${err.error.message} ${err.error.fieldErrors[0].message}`,
+              swal(`Error ${err.error.message}`,
+                `${err.error.fieldErrors[0].field} ${err.error.fieldErrors[0].message}`,
                 'error')
             }
           );
@@ -62,8 +62,8 @@ export class FormComponent implements OnInit {
       },
       err => {
         console.log("Error: " + JSON.stringify(err)),
-          swal(`Error ${err.error.fieldErrors[0].field}`,
-            `${err.error.message} ${err.error.fieldErrors[0].message}`,
+          swal(`Error ${err.error.message}`,
+            `${err.error.fieldErrors[0].field} ${err.error.fieldErrors[0].message}`,
             'error')
       }
     )
@@ -81,8 +81,8 @@ export class FormComponent implements OnInit {
       },
       err => {
         console.log("Error: " + JSON.stringify(err)),
-          swal(`Error ${err.error.fieldErrors[0].field}`,
-            `${err.error.message} ${err.error.fieldErrors[0].message}`,
+          swal(`Error ${err.error.message}`,
+            `${err.error.fieldErrors[0].field} ${err.error.fieldErrors[0].message}`,
             'error')
       }
     );

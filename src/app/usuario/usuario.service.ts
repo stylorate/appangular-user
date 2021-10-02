@@ -6,7 +6,7 @@ import { map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RespService } from './../resp-service';
 import swal from 'sweetalert2';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class UsuarioService {
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
 
-  constructor(private http: HttpClient, private router : Router) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   getUsuarios(): Observable<RespService> {
     // return of(USUARIOS);
@@ -25,7 +25,17 @@ export class UsuarioService {
   }
 
   createOrUpdate(user: Usuario): Observable<RespService> {
-    return this.http.post<RespService>(this.url, user, { headers: this.httpHeaders });
+    console.log("request: " + JSON.stringify(user))
+    return this.http.post<RespService>(this.url, user, { headers: this.httpHeaders })
+    // return this.http.post(this.url, user, { headers: this.httpHeaders })
+      .pipe(
+        // map((resp: any) => resp as RespService),
+        catchError(e => {
+          console.error(e.error.message);
+          swal('Error ', e.error.message, 'error');
+          return throwError(e);
+        })
+      );
   }
 
   getUser(id: string): Observable<RespService> {
@@ -33,14 +43,20 @@ export class UsuarioService {
       catchError(e => {
         this.router.navigate(['/usuarios']);
         console.error(e.error.message);
-        swal('Error al editar ' , e.error.message, 'error');
+        swal('Error al editar ', e.error.message, 'error');
         return throwError(e);
       })
     );
   }
 
   deleteUser(id: string): Observable<RespService> {
-    return this.http.delete<RespService>(`${this.url}/${id}`, { headers: this.httpHeaders });
+    return this.http.delete<RespService>(`${this.url}/${id}`, { headers: this.httpHeaders }).pipe(
+      catchError(e => {
+        console.error(e.error.message);
+        swal('Error al eliminar el usuario ', e.error.message, 'error');
+        return throwError(e);
+      })
+    );
   }
 
 }
